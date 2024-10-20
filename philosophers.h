@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 21:59:26 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/10/21 00:52:51 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/10/21 01:10:55 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_philo
 	int				times_must_eat; //Optional	= argv[5] opcional, veces que debe de comer cada filosofo.
 	int				left_fork;
 	int				right_fork;
-	long long			last_meal_time;
+	long long				last_meal_time;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	*write_lock;
 	struct s_philo 	*next;
@@ -46,7 +46,10 @@ typedef struct s_philo
 philo *create_node(int id);
 //AÑADIR NODO AL FINAL DE LA LISTA ENLAZADA
 void ft_lstadd_back(philo **lst, philo *new);
+//IMPRIME POR PANTALLA LOS DATOS DE LOS ELEMENTOS DE LA ESTRUCTURA
+void print_list_struct(philo **philosophers);
 
+long long get_time_in_ms(void);
 
 
 #endif
