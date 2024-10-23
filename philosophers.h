@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 21:59:26 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/10/22 13:15:16 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/10/23 12:56:19 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,10 @@ typedef struct s_philo
 	int					right_fork;
 	size_t				meal_start;
 	size_t				last_meal_time;
+	size_t				start;
+	pthread_t			own;
+	pthread_t			director;
+	pthread_t			*threads;
 	struct s_philo 		*next;
 }	t_philo;
 
@@ -74,5 +78,11 @@ int			ft_usleep(size_t milisec);
 //FT_ATOI - ASCII TO INT FUCTION - LIBFT
 int			ft_atoi(const char *str);
 
+//Routine
+void	*routine(void *job);
+
+void	make_threads (t_philo **list);
+
+int	grab_forks(t_philo **philosophers);
 
 #endif
