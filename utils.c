@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 18:21:54 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/10/30 18:46:50 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/10/30 19:53:13 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ size_t	get_time_in_ms(void)
 	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }
 
-
 int	ft_atoi(const char *str)
 {
 	int	result;
@@ -55,3 +54,12 @@ int	ft_atoi(const char *str)
 	return (result * sign);
 }
 
+int	ft_usleep(size_t milisec)
+{
+	size_t start;
+	
+	start = get_time_in_ms();
+	while((get_time_in_ms() - start) < milisec)
+		usleep(10);
+	return(0);	
+}

@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 18:11:31 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/10/30 18:46:19 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/10/30 19:45:20 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,12 @@ int					ft_atoi(const char *str);
 size_t				get_time_in_ms(void);
 //ERRORS----------------------------> errors.c
 int					ft_error(char *str);
+//MONITOR - MAIN THREAD ------------> monitor.c
+void				*monitor(void *ph);
+//THREADS MANAGEMENT ---------------> threads.c
+void				thread_destroy(t_prog *prog, pthread_mutex_t *forks);
+void				thread_create(t_prog *prog, pthread_mutex_t *forks);
+
 
 
 
