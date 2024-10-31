@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 18:47:42 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/10/30 19:43:22 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/10/31 12:51:14 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	thread_destroy(t_prog *prog, pthread_mutex_t *forks)
 
 void	thread_create(t_prog *prog, pthread_mutex_t *forks)
 {
-	pthread_t	boss;
+	pthread_t	mainthread;
 	int			i;
 
 	i = 0;
@@ -38,4 +38,11 @@ void	thread_create(t_prog *prog, pthread_mutex_t *forks)
 			thread_destroy(prog, forks);
 		i++;	
 	}
+	if(pthread_join(mainthread, NULL) != 0)
+		thread_destroy(prog, forks);
+	i = 0;
+	while (i < prog->philo_num)
+	{
+		if (pthread_join(prog->philos[i].thread, NULL) != 0)
+	}	
 }
