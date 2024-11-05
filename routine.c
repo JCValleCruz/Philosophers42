@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 19:45:45 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/04 20:04:54 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/05 11:43:38 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,22 @@ void	eat(t_philo *philo)
 	philo->last_meal = get_time_in_ms();
 	philo->times_eaten++;
 	pthread_mutex_unlock(philo->eat_lock);
+	ft_usleep(philo->time_to_eat);
+	philo->eating_flag = 0;
+	pthread_mutex_unlock(philo->r_fork);
+	pthread_mutex_unlock(philo->l_fork);	
+}
+
+void	think(t_philo *philo)
+{
+	print_action("is thinking", philo, philo->id, WHITE);
+	ft_usleep(1);
+}
+
+void	sleep(t_philo *philo)
+{
+	print_action("is sleeping", philo, philo->id, BLUE);
+	ft_usleep(philo->time_to_sleep);
 }
 
 void	*routine(void *ph)
@@ -58,7 +74,7 @@ void	*routine(void *ph)
 	{
 		eat(philo);
 		sleeping(philo);
-		rave(philo);
+		think(philo);
 	}
 	return (ph);
 }

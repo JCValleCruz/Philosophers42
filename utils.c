@@ -6,11 +6,22 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 18:21:54 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/10/30 19:53:13 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/05 11:16:04 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
+
+void	print_action(char *str, t_philo *philo, int id, char *color)
+{
+	size_t	time;
+
+	pthread_mutex_lock(philo->write_lock);
+	time = get_time_in_ms() - philo->meal_start;
+	if(live_loop(philo))
+		printf("%s[%zu] %d %s\n", color, time, id, str);
+	pthread_mutex_unlock(philo->write_lock);	
+}
 
 int	ft_strlen(char *str)
 {

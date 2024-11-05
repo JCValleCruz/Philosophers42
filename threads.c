@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 18:47:42 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/10/31 12:51:14 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/05 11:20:25 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	thread_create(t_prog *prog, pthread_mutex_t *forks)
 	int			i;
 
 	i = 0;
-	if (pthread_create(&boss, NULL, &monitor, prog->philos) != 0)
+	if (pthread_create(&mainthread, NULL, &monitor, prog->philos) != 0)
 		thread_destroy(prog, forks);
 	while (i < prog->philo_num)
 	{
@@ -43,6 +43,6 @@ void	thread_create(t_prog *prog, pthread_mutex_t *forks)
 	i = 0;
 	while (i < prog->philo_num)
 	{
-		if (pthread_join(prog->philos[i].thread, NULL) != 0)
+		if (pthread_join(prog->philos[i].thread, NULL) != 0);
 	}	
 }

@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 18:15:08 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/10/30 18:40:05 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/05 11:36:38 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,6 @@ void	initialize_program(t_prog *prog, t_philo *philos, char **argv)
 	prog->philo_num = ft_atoi(argv[1]);
 	initialize_forks(forks, prog->philo_num);
 	initialize_philos(philos, argv, prog, forks);
-	//thread_create(prog, forks);
-	//destroy(prog, forks);
+	thread_create(prog, forks);
+	thread_destroy(prog, forks);
 }

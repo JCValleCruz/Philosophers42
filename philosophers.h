@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 18:11:31 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/10/30 19:45:20 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/05 11:44:25 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,18 +63,27 @@ typedef struct s_list
 }	t_prog;
 
 //UTILS------------------------------> utils.c
+void				print_action(char *str, t_philo *philo, int id, char *color);
 int					ft_strlen(char *str);
-int					ft_atoi(const char *str);
 size_t				get_time_in_ms(void);
+int					ft_atoi(const char *str);
+int					ft_usleep(size_t milisec);
 //ERRORS----------------------------> errors.c
 int					ft_error(char *str);
+//----------------------------------> routine.c
+void				grab_forks(t_philo *philo);
+void				eat(t_philo *philo);
+void				think(t_philo *philo);
+void				sleep(t_philo *philo);
+void				*routine(void *ph);
 //MONITOR - MAIN THREAD ------------> monitor.c
 void				*monitor(void *ph);
 //THREADS MANAGEMENT ---------------> threads.c
 void				thread_destroy(t_prog *prog, pthread_mutex_t *forks);
 void				thread_create(t_prog *prog, pthread_mutex_t *forks);
-
-
-
-
+//INIT------------------------------> init.c
+void				initialize_forks(pthread_mutex_t *forks, int nofphilos);
+void				initialize_args(t_philo *ph, char **argv);
+void				initialize_philos(t_philo *ph, char **argv, t_prog *prog, pthread_mutex_t *forks);
+void				initialize_program(t_prog *prog, t_philo *philos, char **argv);
 #endif
