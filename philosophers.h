@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 18:11:31 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/05 11:44:25 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/05 12:13:27 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 
 # ifndef PHILO_MAX
 #  define PHILO_MAX 200
-# endif
+#  endif
 
 
 typedef struct s_philo
@@ -64,7 +64,7 @@ typedef struct s_list
 
 //UTILS------------------------------> utils.c
 void				print_action(char *str, t_philo *philo, int id, char *color);
-int					ft_strlen(char *str);
+int					ft_strlen(const char *str);
 size_t				get_time_in_ms(void);
 int					ft_atoi(const char *str);
 int					ft_usleep(size_t milisec);
@@ -72,12 +72,16 @@ int					ft_usleep(size_t milisec);
 int					ft_error(char *str);
 //----------------------------------> routine.c
 void				grab_forks(t_philo *philo);
-void				eat(t_philo *philo);
-void				think(t_philo *philo);
-void				sleep(t_philo *philo);
+void				eating(t_philo *philo);
+void				thinking(t_philo *philo);
+void				sleeping(t_philo *philo);
 void				*routine(void *ph);
 //MONITOR - MAIN THREAD ------------> monitor.c
 void				*monitor(void *ph);
+int					live_loop(t_philo *philo);
+int					philo_is_dead(t_philo *philo);
+int					check_dead(t_philo *philo);
+int					all_ate(t_philo *philo);
 //THREADS MANAGEMENT ---------------> threads.c
 void				thread_destroy(t_prog *prog, pthread_mutex_t *forks);
 void				thread_create(t_prog *prog, pthread_mutex_t *forks);

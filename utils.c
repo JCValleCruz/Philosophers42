@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 18:21:54 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/05 11:16:04 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/05 12:13:48 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	print_action(char *str, t_philo *philo, int id, char *color)
 	pthread_mutex_unlock(philo->write_lock);	
 }
 
-int	ft_strlen(char *str)
+int	ft_strlen(const char *str)
 {
 	int c;
 
@@ -57,6 +57,8 @@ int	ft_atoi(const char *str)
 			sign = -1;
 		str++;
 	}
+	if (*str == '\0')
+		return (-1);
 	while (*str >= '0' && *str <= '9')
 	{
 		result = result * 10 + (*str - '0');

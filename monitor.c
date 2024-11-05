@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 19:43:02 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/05 11:52:33 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/05 11:58:34 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		live_loop(t_philo *philo)
 		pthread_mutex_unlock(philo->dead_lock);
 		return (0);		
 	}
-	pthread_mutex_unlock(philo->dead);
+	pthread_mutex_unlock(philo->dead_lock);
 	return (1);	
 }
 

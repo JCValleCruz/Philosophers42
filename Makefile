@@ -1,7 +1,6 @@
 NAME    = philo
-USER    = jose-rig
-CFLAGS  = -Wall -Wextra -Werror -fsanitize=thread
-CC      = clang
+USER    = jvalle-d
+CFLAGS  = -Wall -Wextra -Werror 
 
 MAGENTA = \033[35;1m
 YELLOW  = \033[33;1m
@@ -14,7 +13,7 @@ CYAN    = \033[37;1m
 BOLD	= \033[1m
 RED		= \033[31;1m
 
-SRCS	:= main.c utils.c errors.c inits.c monitor.c routine.c threads.c 
+SRCS	:= main.c utils.c errors.c init.c monitor.c routine.c threads.c 
 
 OBJS	:= ${SRCS:.c=.o}
 

@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 19:45:45 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/05 11:43:38 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/05 11:56:43 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	grab_forks(t_philo *philo)									//Porque se hace inversamente, cuestiona
 	}
 }
 
-void	eat(t_philo *philo)
+void	eating(t_philo *philo)
 {
 	grab_forks(philo);
 	philo->eating_flag = 1;
@@ -45,13 +45,13 @@ void	eat(t_philo *philo)
 	pthread_mutex_unlock(philo->l_fork);	
 }
 
-void	think(t_philo *philo)
+void	thinking(t_philo *philo)
 {
 	print_action("is thinking", philo, philo->id, WHITE);
 	ft_usleep(1);
 }
 
-void	sleep(t_philo *philo)
+void	sleeping(t_philo *philo)
 {
 	print_action("is sleeping", philo, philo->id, BLUE);
 	ft_usleep(philo->time_to_sleep);
@@ -72,9 +72,9 @@ void	*routine(void *ph)
 	}
 	while (live_loop(philo) == 1)
 	{
-		eat(philo);
+		eating(philo);
 		sleeping(philo);
-		think(philo);
+		thinking(philo);
 	}
 	return (ph);
 }

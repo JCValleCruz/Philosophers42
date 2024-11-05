@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 18:13:47 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/05 11:37:05 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/05 12:07:22 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 
 int	check_argv(char **argv)
 {
-	int	argv1;
-
-	argv1 = ft_atoi(argv[1]);
-	if (argv1 <= 0 || argv1 > 200)
+	if (ft_atoi(argv[1]) <= 0 || (ft_atoi(argv[1]) > 200)) 
 		return (ft_error("Incorrect Nº of Philos"));
 	if (ft_atoi(argv[2]) <= 0)
 		return (ft_error("Error Time to Die value was incorrect"));
