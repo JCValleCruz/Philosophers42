@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 18:15:08 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/05 12:04:45 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/07 12:01:00 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 
 void	initialize_forks(pthread_mutex_t *forks, int nofphilos)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(i < nofphilos)
+	while (i < nofphilos)
 		pthread_mutex_init(&forks[i++], NULL);
-	
 }
 
 void	initialize_args(t_philo *ph, char **argv)
@@ -33,12 +32,13 @@ void	initialize_args(t_philo *ph, char **argv)
 		ph->n_times_to_eat = ft_atoi(argv[5]);
 }
 
-void	initialize_philos(t_philo *ph, char **argv, t_prog *prog, pthread_mutex_t *forks)
+void	initialize_philos(t_philo *ph, char **argv, t_prog *prog,
+	pthread_mutex_t *forks)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
-	while(i < prog->philo_num)
+	while (i < prog->philo_num)
 	{
 		initialize_args(&ph[i], argv);
 		ph[i].times_eaten = 0;
@@ -53,15 +53,15 @@ void	initialize_philos(t_philo *ph, char **argv, t_prog *prog, pthread_mutex_t *
 		if (i == 0)
 			ph[i].r_fork = &forks[ph[i].n_philo - 1];
 		else
-			ph[i].l_fork = &forks[i - 1];
+			ph[i].r_fork = &forks[i - 1];
 		i++;
 	}
 }
 
 void	initialize_program(t_prog *prog, t_philo *philos, char **argv)
 {
-	pthread_mutex_t forks[PHILO_MAX];
-	
+	pthread_mutex_t	forks[PHILO_MAX];
+
 	prog->dead_flag = 0;
 	pthread_mutex_init(&prog->dead_lock, NULL);
 	pthread_mutex_init(&prog->write_lock, NULL);

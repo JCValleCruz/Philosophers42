@@ -6,15 +6,15 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 19:45:45 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/05 11:56:43 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/07 11:23:46 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	grab_forks(t_philo *philo)									//Porque se hace inversamente, cuestionar.
+void	grab_forks(t_philo *philo)
 {
-	if(philo->id % 2 == 0)
+	if (philo->id % 2 == 0)
 	{
 		pthread_mutex_lock(philo->r_fork);
 		print_action("has taken a fork", philo, philo->id, YELLOW);
@@ -42,7 +42,7 @@ void	eating(t_philo *philo)
 	ft_usleep(philo->time_to_eat);
 	philo->eating_flag = 0;
 	pthread_mutex_unlock(philo->r_fork);
-	pthread_mutex_unlock(philo->l_fork);	
+	pthread_mutex_unlock(philo->l_fork);
 }
 
 void	thinking(t_philo *philo)
@@ -59,8 +59,8 @@ void	sleeping(t_philo *philo)
 
 void	*routine(void *ph)
 {
-	t_philo *philo;
-	
+	t_philo	*philo;
+
 	philo = (t_philo *)ph;
 	if (philo->id % 2 == 0)
 		ft_usleep(10);

@@ -6,22 +6,22 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 19:43:02 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/05 11:58:34 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/07 11:22:45 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int		live_loop(t_philo *philo)
+int	live_loop(t_philo *philo)
 {
 	pthread_mutex_lock(philo->dead_lock);
 	if (*philo->dead == 1)
 	{
 		pthread_mutex_unlock(philo->dead_lock);
-		return (0);		
+		return (0);
 	}
 	pthread_mutex_unlock(philo->dead_lock);
-	return (1);	
+	return (1);
 }
 
 int	philo_is_dead(t_philo *philo)
@@ -34,7 +34,7 @@ int	philo_is_dead(t_philo *philo)
 		return (1);
 	}
 	pthread_mutex_unlock(philo->eat_lock);
-	return (0);	
+	return (0);
 }
 
 int	check_dead(t_philo *philo)
@@ -86,17 +86,13 @@ int	all_ate(t_philo *philo)
 
 void	*monitor(void *ph)
 {
-	t_philo *philos;
+	t_philo	*philos;
 
 	philos = (t_philo *)ph;
 	while (1)
 	{
-		if(check_dead(philos) == 1 || all_ate(philos) == 1)
+		if (check_dead(philos) == 1 || all_ate(philos) == 1)
 			return (ph);
 	}
 	return (ph);
 }
-
-
-
-

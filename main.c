@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 18:13:47 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/05 12:07:22 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/07 11:57:14 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	check_argv(char **argv)
 {
-	if (ft_atoi(argv[1]) <= 0 || (ft_atoi(argv[1]) > 200)) 
+	if (ft_atoi(argv[1]) <= 0 || (ft_atoi(argv[1]) > 200))
 		return (ft_error("Incorrect Nº of Philos"));
 	if (ft_atoi(argv[2]) <= 0)
 		return (ft_error("Error Time to Die value was incorrect"));
@@ -23,20 +23,20 @@ int	check_argv(char **argv)
 	if (ft_atoi(argv[4]) <= 0)
 		return (ft_error("Error Time to Sleep value was incorrect"));
 	if (argv[5])
-		if (ft_atoi(argv[5]) < 0)
-			return (ft_error("Number of meals value was incorrect"));				
-	return (0);	
+		if (ft_atoi(argv[5]) <= 0)
+			return (ft_error("Number of meals value was incorrect"));
+	return (0);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_philo		philos[PHILO_MAX];
 	t_prog		prog;
-	
+
 	if (argc != 5 && argc != 6)
 		return (ft_error("Error: Nº of arguments was incorrect"));
 	if (check_argv(argv) == 1)
 		return (1);
 	initialize_program(&prog, philos, argv);
-	return (0);		
+	return (0);
 }

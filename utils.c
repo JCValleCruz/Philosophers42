@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 18:21:54 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/05 12:13:48 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/07 12:31:07 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,19 @@ void	print_action(char *str, t_philo *philo, int id, char *color)
 
 	pthread_mutex_lock(philo->write_lock);
 	time = get_time_in_ms() - philo->meal_start;
-	if(live_loop(philo))
+	if (live_loop(philo))
 		printf("%s[%zu] %d %s\n", color, time, id, str);
-	pthread_mutex_unlock(philo->write_lock);	
+	pthread_mutex_unlock(philo->write_lock);
 }
 
 int	ft_strlen(const char *str)
 {
-	int c;
+	int	c;
 
 	c = 0;
-	while(str)
+	while (str[c])
 		c++;
-	return (c);	
+	return (c);
 }
 
 size_t	get_time_in_ms(void)
@@ -57,8 +57,6 @@ int	ft_atoi(const char *str)
 			sign = -1;
 		str++;
 	}
-	if (*str == '\0')
-		return (-1);
 	while (*str >= '0' && *str <= '9')
 	{
 		result = result * 10 + (*str - '0');
@@ -69,10 +67,10 @@ int	ft_atoi(const char *str)
 
 int	ft_usleep(size_t milisec)
 {
-	size_t start;
-	
+	size_t	start;
+
 	start = get_time_in_ms();
-	while((get_time_in_ms() - start) < milisec)
+	while ((get_time_in_ms() - start) < milisec)
 		usleep(10);
-	return(0);	
+	return (0);
 }

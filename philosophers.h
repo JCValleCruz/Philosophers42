@@ -6,11 +6,11 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 18:11:31 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/05 12:13:27 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/07 11:41:41 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	PHILOSOPHERS_H
+#ifndef PHILOSOPHERS_H
 # define PHILOSOPHERS_H
 
 # include <pthread.h>
@@ -28,8 +28,7 @@
 
 # ifndef PHILO_MAX
 #  define PHILO_MAX 200
-#  endif
-
+# endif
 
 typedef struct s_philo
 {
@@ -63,7 +62,8 @@ typedef struct s_list
 }	t_prog;
 
 //UTILS------------------------------> utils.c
-void				print_action(char *str, t_philo *philo, int id, char *color);
+void				print_action(char *str, t_philo *philo,
+						int id, char *color);
 int					ft_strlen(const char *str);
 size_t				get_time_in_ms(void);
 int					ft_atoi(const char *str);
@@ -88,6 +88,8 @@ void				thread_create(t_prog *prog, pthread_mutex_t *forks);
 //INIT------------------------------> init.c
 void				initialize_forks(pthread_mutex_t *forks, int nofphilos);
 void				initialize_args(t_philo *ph, char **argv);
-void				initialize_philos(t_philo *ph, char **argv, t_prog *prog, pthread_mutex_t *forks);
-void				initialize_program(t_prog *prog, t_philo *philos, char **argv);
+void				initialize_philos(t_philo *ph, char **argv, t_prog *prog,
+						pthread_mutex_t *forks);
+void				initialize_program(t_prog *prog, t_philo *philos,
+						char **argv);
 #endif
